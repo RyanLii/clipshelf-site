@@ -1,25 +1,171 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ClipShelf</title>
-<meta name="description" content="ClipShelf keeps your clipboard history on Mac and iPhone.">
-<link rel="stylesheet" href="style.css">
+<title>ClipShelf: Clipboard Manager for Mac, iPhone and iPad</title>
+<meta name="description" content="ClipShelf keeps everything you copy in a clipboard history you can search. Pin what matters and sync with your own iCloud. No accounts, no ads, no tracking.">
+<link rel="canonical" href="https://clipshelfapp.vercel.app/">
+<meta name="apple-itunes-app" content="app-id=6823508990">
+<meta name="theme-color" content="#1c1c1c">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ClipShelf">
+<meta property="og:title" content="ClipShelf: Clipboard Manager for Mac, iPhone and iPad">
+<meta property="og:description" content="ClipShelf keeps everything you copy in a clipboard history you can search. Pin what matters and sync with your own iCloud. No accounts, no ads, no tracking.">
+<meta property="og:url" content="https://clipshelfapp.vercel.app/">
+<meta property="og:image" content="https://clipshelfapp.vercel.app/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The ClipShelf shelf on a Mac, showing copied images, text, a link and a color as cards.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/general-sans-500.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/site.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://clipshelfapp.vercel.app/#publisher","name":"Rui Li","url":"https://clipshelfapp.vercel.app/"},{"@type":"WebSite","@id":"https://clipshelfapp.vercel.app/#website","url":"https://clipshelfapp.vercel.app/","name":"ClipShelf","publisher":{"@id":"https://clipshelfapp.vercel.app/#publisher"}},{"@type":"MobileApplication","@id":"https://clipshelfapp.vercel.app/iphone#app","name":"ClipShelf for iPhone and iPad","url":"https://clipshelfapp.vercel.app/iphone","downloadUrl":"https://apps.apple.com/app/id6823508990","operatingSystem":"iOS 17 or later, iPadOS 17 or later","applicationCategory":"ProductivityApplication","description":"Clipboard history for iPhone and iPad with pinboards, search, a keyboard and optional iCloud sync.","image":"https://clipshelfapp.vercel.app/assets/img/icon-192.png","screenshot":["https://clipshelfapp.vercel.app/assets/img/iphone-list.webp","https://clipshelfapp.vercel.app/assets/img/ipad.webp"],"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@id":"https://clipshelfapp.vercel.app/#publisher"}},{"@type":"SoftwareApplication","@id":"https://clipshelfapp.vercel.app/mac#app","name":"ClipShelf for Mac","url":"https://clipshelfapp.vercel.app/mac","operatingSystem":"macOS 14 or later","applicationCategory":"ProductivityApplication","description":"A clipboard manager for Mac: open your clipboard history with Shift-Command-V, search it, pin items and paste a stack in order.","image":"https://clipshelfapp.vercel.app/assets/img/icon-192.png","screenshot":["https://clipshelfapp.vercel.app/assets/img/mac-mountain.webp","https://clipshelfapp.vercel.app/assets/img/mac-stack.webp"],"publisher":{"@id":"https://clipshelfapp.vercel.app/#publisher"}}]}</script>
 </head>
 <body>
-<main>
-  <nav><a href="./">ClipShelf</a><a href="privacy.html">Privacy</a><a href="support.html">Support</a></nav>
-  <header>
-    <h1>ClipShelf</h1>
-    <p class="lede">Clipboard history for Mac and iPhone.</p>
-  </header>
-  <p>ClipShelf keeps what you copy, so you can find it and paste it again. Organize items on pinboards, search your history, and sync with your own iCloud account if you turn sync on.</p>
-  <ul>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-    <li><a href="support.html">Support</a></li>
-  </ul>
-  <footer>© 2026 RUI LI</footer>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="top-mark" href="./" aria-label="ClipShelf home"><img src="assets/img/icon-192.png" width="40" height="40" alt=""></a>
+  <nav class="top-links" aria-label="Main">
+    <a href="mac">Mac</a>
+    <a href="iphone">iPhone</a>
+    <a href="support">Support</a>
+  </nav>
+  <a class="top-action" href="https://apps.apple.com/app/id6823508990">App Store</a>
+</header>
+<main id="main">
+<section class="board hero" aria-label="ClipShelf">
+  <div class="tile hero-name"><h1><span class="hero-word">ClipShelf</span><span class="hero-what">Clipboard manager for iPhone and Mac</span></h1></div>
+  <div class="tile tile-pic hero-mac shutter"><img src="assets/img/mac-mountain.webp" width="1800" height="1125" alt="The ClipShelf shelf on a Mac, with copied images, text, code, a link and a color laid out as cards." fetchpriority="high" decoding="async"></div>
+  <div class="tile tile-pic hero-phone"><img src="assets/img/iphone-list.webp" width="800" height="1067" alt="ClipShelf on iPhone: a searchable list of copied images, text, code and links, with pinboard tabs above it." decoding="async"></div>
+  <div class="tile tile-pic hero-phone2 drift"><img src="assets/img/iphone-link.webp" width="800" height="1273" alt="A saved link in ClipShelf on iPhone, with a photo of latte art and the page title." decoding="async"></div>
+  <div class="tile hero-say"><p>Everything you copy, kept on a shelf you can search.</p><p class="note">Text, links and images, on your devices and in your own iCloud.</p></div>
+  <div class="tile tile-accent hero-get"><p class="big">Free on iPhone and iPad.</p><p><a class="button" href="https://apps.apple.com/app/id6823508990">Get it on the App Store</a></p></div>
+</section>
+
+<section class="board devices section-gap" aria-labelledby="devices">
+  <div class="tile head rise"><h2 id="devices">One shelf on every Apple device</h2><p>Copy on your Mac and find it on your iPhone. ClipShelf is built for each screen, and optional iCloud sync keeps them together.</p></div>
+  <a class="tile device d-mac rise" href="mac"><div class="device-pic"><img src="assets/img/mac-alley.webp" width="1800" height="1125" alt="ClipShelf for Mac open at the bottom of the screen over a photo of a lantern-lit alley." loading="lazy" decoding="async"></div><div class="device-text"><h3>Mac</h3><p>Press Shift-Command-V in any app. Coming to the Mac App Store.</p></div></a>
+  <a class="tile device d-iphone rise" href="iphone"><div class="device-pic"><img src="assets/img/iphone-travel.webp" width="800" height="1030" alt="A Travel pinboard on iPhone, holding a photo, a message, a link and a hotel address." loading="lazy" decoding="async"></div><div class="device-text"><h3>iPhone</h3><p>History, pinboards and a keyboard for any app.</p></div></a>
+  <a class="tile device d-ipad rise" href="iphone#ipad"><div class="device-pic"><img src="assets/img/ipad.webp" width="1400" height="1867" alt="ClipShelf on iPad, with the list and the selected item side by side." loading="lazy" decoding="async"></div><div class="device-text"><h3>iPad</h3><p>The list and the item, side by side.</p></div></a>
+  <a class="tile device d-duo rise" href="iphone#ipad"><div class="device-pic"><img src="assets/img/duo-open.webp" width="1600" height="1162" alt="ClipShelf on an open iPhone Duo, with the list on one side of the fold and a photo on the other." loading="lazy" decoding="async"></div><div class="device-text"><h3>iPhone Duo</h3><p>Open it to see the list and the item split at the fold. Close it to go back to the list.</p></div></a>
+</section>
+
+<section class="section-gap" aria-labelledby="try">
+  <div class="rows-head"><div class="tile"><h2 id="try" class="rise">Copy something and watch it land</h2><p class="rise">Open a row and press Copy, or select any words on this page and copy them. They land on a small shelf, the way they do in the app.</p></div></div>
+  <div class="rows">
+  <details class="row rise" name="clips" open data-ui>
+    <summary><span class="row-name">Landing at 6:40 pm. Dinner at the little ramen place near the station?</span><span class="row-from">Messages</span><span class="row-time">15 mins</span><span class="row-kind k-text">Text</span></summary>
+    <div class="row-body"><p>Landing at 6:40 pm. Dinner at the little ramen place near the station?</p><button type="button" class="button copy-btn" data-copy="Landing at 6:40 pm. Dinner at the little ramen place near the station?">Copy</button></div>
+  </details>
+  <details class="row rise" name="clips" data-ui>
+    <summary><span class="row-name">git switch -c feature/shelf-preview &amp;&amp; swift test</span><span class="row-from">Terminal</span><span class="row-time">3 hrs</span><span class="row-kind k-code">Code</span></summary>
+    <div class="row-body"><pre>git switch -c feature/shelf-preview &amp;&amp; swift test</pre><button type="button" class="button copy-btn" data-copy="git switch -c feature/shelf-preview &amp;&amp; swift test">Copy</button></div>
+  </details>
+  <details class="row rise" name="clips" data-ui>
+    <summary><span class="row-name">https://en.wikipedia.org/wiki/Latte_art</span><span class="row-from">Safari</span><span class="row-time">1 hr</span><span class="row-kind k-link">Link</span></summary>
+    <div class="row-body"><p>https://en.wikipedia.org/wiki/Latte_art</p><button type="button" class="button copy-btn" data-copy="https://en.wikipedia.org/wiki/Latte_art">Copy</button></div>
+  </details>
+  <details class="row rise" name="clips" data-ui>
+    <summary><span class="row-name">#FF6B4A</span><span class="row-from">Notes</span><span class="row-time">2 hrs</span><span class="row-kind k-color">Color</span></summary>
+    <div class="row-body"><p>#FF6B4A</p><button type="button" class="button copy-btn" data-copy="#FF6B4A">Copy</button></div>
+  </details>
+  <details class="row rise" name="clips" data-ui>
+    <summary><span class="row-name">Hotel Gracery Shinjuku, 1-19-1 Kabukicho, Tokyo 160-8466</span><span class="row-from">Maps</span><span class="row-time">Yesterday</span><span class="row-kind k-address">Address</span></summary>
+    <div class="row-body"><p>Hotel Gracery Shinjuku, 1-19-1 Kabukicho, Tokyo 160-8466</p><button type="button" class="button copy-btn" data-copy="Hotel Gracery Shinjuku, 1-19-1 Kabukicho, Tokyo 160-8466">Copy</button></div>
+  </details>
+  <details class="row rise" name="clips" data-ui>
+    <summary><span class="row-name">{ &quot;theme&quot;: &quot;sunset&quot;, &quot;accent&quot;: &quot;#FF6B4A&quot; }</span><span class="row-from">Xcode</span><span class="row-time">10 hrs</span><span class="row-kind k-json">JSON</span></summary>
+    <div class="row-body"><pre>{ &quot;theme&quot;: &quot;sunset&quot;, &quot;accent&quot;: &quot;#FF6B4A&quot; }</pre><button type="button" class="button copy-btn" data-copy="{ &quot;theme&quot;: &quot;sunset&quot;, &quot;accent&quot;: &quot;#FF6B4A&quot; }">Copy</button></div>
+  </details>
+  </div>
+</section>
+
+<section class="board mosaic section-gap" aria-labelledby="features">
+  <div class="tile m m-6x2 m-head rise"><h2 id="features">What your clipboard can do</h2></div>
+  <div class="tile m m-6x4 m-pic rise"><div class="pic"><img src="assets/img/iphone-code.webp" width="800" height="1067" alt="A Code pinboard on iPhone with Swift code, a git command, a link and JSON." loading="lazy" decoding="async"></div><div class="cap"><h3>Pinboards</h3><p>Keep items on named, colored boards, such as Travel or Code. Pinned items never expire.</p></div></div>
+  <div class="tile m m-3x2 rise"><div class="m-ui" data-ui><div class="search-ui">latte art</div></div><h3>Search</h3><p>Find items by words, then filter by type and date.</p></div>
+  <div class="tile m m-3x2 rise"><div class="swatch" data-ui></div><h3>Colors, links, images</h3><p>Each one looks like what it is.</p></div>
+  <div class="tile m m-6x4 m-pic rise"><div class="pic"><img src="assets/img/mac-stack.webp" width="1000" height="862" alt="The Paste Stack panel on Mac listing four copied items in order." loading="lazy" decoding="async"></div><div class="cap"><h3>Paste Stack on Mac</h3><p>Press Control-Command-C, copy several items, then press Command-V to paste them one by one.</p></div></div>
+  <div class="tile m m-3x4 rise"><div class="m-ui" data-ui><span class="key">⇧</span><span class="key">⌘</span><span class="key">V</span></div><h3>One shortcut on Mac</h3><p>Open your history from any app. Command-1 to Command-9 copy the first nine items.</p></div>
+  <div class="tile m m-3x4 tile-field rise"><div class="m-ui" data-ui><span class="chip"><i class="dot-o"></i>Travel</span><span class="chip"><i class="dot-p"></i>Code</span><span class="chip"><i class="dot-g"></i>Design</span></div><h3>Keyboard on iPhone</h3><p>The ClipShelf keyboard shows recent items and pinboards in any app. Tap an item to type it.</p></div>
+  <div class="tile m m-6x2 tile-accent rise"><h3>Private by design</h3><p>No account, no ads, no tracking. Sync is off until you turn it on, and then it uses your own private iCloud.</p></div>
+  <div class="tile m m-3x2 rise"><h3>Text in images</h3><p>On Mac, text in copied images is recognized on the device, so you can search for it.</p></div>
+  <div class="tile m m-3x2 rise"><h3>Link previews</h3><p>Links show the page's title and image. You can turn this off in Settings.</p></div>
+</section>
+
+<section class="fields section-gap" id="how" aria-labelledby="how-h">
+  <div class="field"><h2 id="how-h">How it works</h2><div class="clip" data-ui>
+      <div class="clip-top">Text</div>
+      <div class="clip-body">Landing at 6:40 pm.</div>
+      <div class="clip-foot"></div>
+    </div><p class="rise">First you copy it, as you always do.</p></div>
+  <div class="field"><div class="field-spacer"></div><div class="clip" data-ui>
+      <div class="clip-top">Text<span>15 mins ago</span></div>
+      <div class="clip-body">Landing at 6:40 pm.</div>
+      <div class="clip-foot"><span>Messages</span><span>⌘2</span></div>
+    </div><p class="rise">Then it lands on your shelf, with where it came from.</p></div>
+  <div class="field"><div class="field-spacer"></div><div class="clip" data-ui>
+      <div class="clip-top">Text<span>15 mins ago</span></div>
+      <div class="clip-body">Landing at 6:40 pm.</div>
+      <div class="clip-foot"><b>Pinned to Travel</b><span>⌘2</span></div>
+    </div><p class="rise">Pin it, and it stays until you remove it.</p></div>
+  <div class="field"><div class="field-spacer"></div><div class="clip" data-ui>
+      <div class="clip-top">Text<span>On iPhone and Mac</span></div>
+      <div class="clip-body">Landing at 6:40 pm.</div>
+      <div class="clip-foot"><b>Pinned to Travel</b><span>Synced</span></div>
+    </div><p class="rise">Turn on sync, and it follows you to your other devices.</p></div>
+</section>
+
+<section class="section-gap" id="questions" aria-labelledby="q">
+  <div class="band band-head"><h2 id="q">Common questions</h2></div>
+  <div class="band"><h3>What is ClipShelf?</h3><div><p>ClipShelf is a clipboard manager for Mac, iPhone and iPad. It keeps the text, links and images you copy in a history you can search, so you can use them again. You can keep important items on named, colored pinboards, where they never expire.</p></div></div>
+  <div class="band"><h3>Does iPhone have a clipboard history?</h3><div><p>No. iOS remembers only the last thing you copied. ClipShelf adds a history, but iOS lets apps read the clipboard only while they are open. So ClipShelf saves what you copied when you open the app or its keyboard, when you tap its paste button, or when you share something to it.</p></div></div>
+  <div class="band"><h3>How do I see my clipboard history on a Mac?</h3><div><p>macOS also holds only one copied item. With ClipShelf on your Mac, press Shift-Command-V in any app to open your history at the bottom of the screen. Type to search, press Return to copy an item, then press Command-V to paste it.</p></div></div>
+  <div class="band"><h3>Is ClipShelf free?</h3><div><p>ClipShelf for iPhone and iPad is free on the App Store, with no in-app purchases and no ads. ClipShelf for Mac is a separate paid app with a one-time price and no subscription. It is in App Review now.</p></div></div>
+  <div class="band"><h3>Is it safe to keep my clipboard in an app?</h3><div><p>ClipShelf has no accounts and no servers of its own, and it does not use analytics or advertising. Your history stays on your devices. On Mac it skips content that apps mark as confidential, such as passwords from password managers, and content from apps you choose to ignore.</p></div></div>
+  <div class="band"><h3>How does sync between Mac and iPhone work?</h3><div><p>Sync is off until you turn it on. When it is on, ClipShelf uses the private database of your own iCloud account, so the developer cannot read it. Turn on sync on each device and sign in to the same iCloud account. You can sync everything or only your pinboards.</p></div></div>
+  <div class="band"><h3>Why does the keyboard ask for Full Access?</h3><div><p>The ClipShelf keyboard needs Full Access to read your history, which is stored in a container it shares with the app. It only inserts the items you tap. It does not record or store what you type, and it does not use the network.</p></div></div>
+</section>
+
+<section class="cta section-gap" aria-labelledby="get">
+  <div class="cta-l"><img src="assets/img/iphone-travel.webp" width="800" height="1030" alt="A Travel pinboard in ClipShelf on iPhone." loading="lazy" decoding="async"></div>
+  <div class="cta-c"><h2 id="get">Stop copying things twice</h2><p>ClipShelf is free on iPhone and iPad, and works with ClipShelf for Mac through your own iCloud.</p><p><a class="button" href="https://apps.apple.com/app/id6823508990">Get it on the App Store</a></p></div>
+  <div class="cta-r"></div>
+</section>
 </main>
+<footer class="foot">
+  <a class="blocks" href="./" aria-label="ClipShelf home">
+    <span aria-hidden="true">C</span><span aria-hidden="true">l</span><span aria-hidden="true">i</span><span aria-hidden="true">p</span><span aria-hidden="true">S</span><span aria-hidden="true">h</span><span aria-hidden="true">e</span><span aria-hidden="true">l</span><span aria-hidden="true">f</span>
+  </a>
+  <div class="foot-cols">
+    <div><h2>Apps</h2><ul>
+      <li><a href="mac">ClipShelf for Mac</a></li>
+      <li><a href="iphone">ClipShelf for iPhone</a></li>
+      <li><a href="iphone#ipad">iPad and iPhone Duo</a></li>
+    </ul></div>
+    <div><h2>Learn</h2><ul>
+      <li><a href="./#how">How it works</a></li>
+      <li><a href="./#questions">Common questions</a></li>
+      <li><a href="mac#keys">Mac keyboard shortcuts</a></li>
+    </ul></div>
+    <div><h2>Help</h2><ul>
+      <li><a href="support">Support</a></li>
+      <li><a href="privacy">Privacy Policy</a></li>
+    </ul></div>
+    <div><h2>Contact</h2><ul>
+      <li><a href="https://github.com/RyanLii/clipshelf-site/issues">Open an issue on GitHub</a></li>
+      <li><a href="https://apps.apple.com/app/id6823508990">ClipShelf on the App Store</a></li>
+    </ul></div>
+  </div>
+  <div class="foot-end"><span>© 2026 Rui Li</span><span>No accounts. No ads. No tracking.</span></div>
+</footer>
+<aside id="shelf" class="shelf" aria-label="Your shelf on this page" hidden>
+  <div class="shelf-bar"><span class="shelf-status" role="status"></span><button type="button" class="shelf-close">Close</button></div>
+  <div class="shelf-list"></div>
+</aside>
 </body>
 </html>
