@@ -67,21 +67,21 @@ const foot = `<footer class="foot">
     ${[..."ClipShelf"].map((c) => `<span aria-hidden="true">${c}</span>`).join("")}
   </a>
   <div class="foot-cols">
-    <div><h2>Apps</h2><ul>
+    <div><p class="foot-label">Apps</p><ul>
       <li><a href="mac">ClipShelf for Mac</a></li>
       <li><a href="iphone">ClipShelf for iPhone</a></li>
       <li><a href="iphone#ipad">iPad and iPhone Duo</a></li>
     </ul></div>
-    <div><h2>Learn</h2><ul>
+    <div><p class="foot-label">Learn</p><ul>
       <li><a href="./#how">How it works</a></li>
       <li><a href="./#questions">Common questions</a></li>
       <li><a href="mac#keys">Mac keyboard shortcuts</a></li>
     </ul></div>
-    <div><h2>Help</h2><ul>
+    <div><p class="foot-label">Help</p><ul>
       <li><a href="support">Support</a></li>
       <li><a href="privacy">Privacy Policy</a></li>
     </ul></div>
-    <div><h2>Contact</h2><ul>
+    <div><p class="foot-label">Contact</p><ul>
       <li><a href="${ISSUES}">Open an issue on GitHub</a></li>
       <li><a href="${IOS}">ClipShelf on the App Store</a></li>
     </ul></div>
@@ -94,7 +94,7 @@ const shelf = `<aside id="shelf" class="shelf" aria-label="Your shelf on this pa
   <div class="shelf-list"></div>
 </aside>`;
 
-function page({ file, path, title, description, current, body, schema = [], ogType = "website", banner = true }) {
+function page({ file, path, title, description, current, body, schema = [], ogType = "website", banner = true, head = "" }) {
   const url = `${SITE}/${path}`;
   const graph = { "@context": "https://schema.org", "@graph": [publisher, ...schema] };
   const html = `<!doctype html>
@@ -105,7 +105,7 @@ function page({ file, path, title, description, current, body, schema = [], ogTy
 <title>${title}</title>
 <meta name="description" content="${description}">
 <link rel="canonical" href="${url}">
-${banner ? '<meta name="apple-itunes-app" content="app-id=6823508990">\n' : ""}<meta name="theme-color" content="#1c1c1c">
+${banner ? '<meta name="apple-itunes-app" content="app-id=6823508990">\n' : ""}${head}<meta name="theme-color" content="#1c1c1c">
 <meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="ClipShelf">
 <meta property="og:title" content="${title}">
@@ -177,6 +177,7 @@ page({
   title: "ClipShelf: Clipboard Manager for Mac, iPhone and iPad",
   description: "ClipShelf keeps everything you copy in a clipboard history you can search. Pin what matters and sync with your own iCloud. No accounts, no ads, no tracking.",
   current: "",
+  head: '<meta name="google-site-verification" content="hbIigC22Wnp4jU4ec2b8nRgtxZ_-Vx-WNhSgpIfC3_M">\n',
   schema: [
     { "@type": "WebSite", "@id": `${SITE}/#website`, url: `${SITE}/`, name: "ClipShelf", publisher: { "@id": `${SITE}/#publisher` } },
     iosApp,
@@ -193,10 +194,10 @@ page({
 
 <section class="board devices section-gap" aria-labelledby="devices">
   <div class="tile head rise"><h2 id="devices">One shelf on every Apple device</h2><p>Copy on your Mac and find it on your iPhone. ClipShelf is built for each screen, and optional iCloud sync keeps them together.</p></div>
-  <a class="tile device d-mac rise" href="mac"><div class="device-pic">${pic("mac-alley.webp", 1800, 1125, "ClipShelf for Mac open at the bottom of the screen over a photo of a lantern-lit alley.")}</div><div class="device-text"><h3>Mac</h3><p>Press Shift-Command-V in any app. Coming to the Mac App Store.</p></div></a>
-  <a class="tile device d-iphone rise" href="iphone"><div class="device-pic">${pic("iphone-travel.webp", 800, 1030, "A Travel pinboard on iPhone, holding a photo, a message, a link and a hotel address.")}</div><div class="device-text"><h3>iPhone</h3><p>History, pinboards and a keyboard for any app.</p></div></a>
-  <a class="tile device d-ipad rise" href="iphone#ipad"><div class="device-pic">${pic("ipad.webp", 1400, 1867, "ClipShelf on iPad, with the list and the selected item side by side.")}</div><div class="device-text"><h3>iPad</h3><p>The list and the item, side by side.</p></div></a>
-  <a class="tile device d-duo rise" href="iphone#ipad"><div class="device-pic">${pic("duo-open.webp", 1600, 1162, "ClipShelf on an open iPhone Duo, with the list on one side of the fold and a photo on the other.")}</div><div class="device-text"><h3>iPhone Duo</h3><p>Open it to see the list and the item split at the fold. Close it to go back to the list.</p></div></a>
+  <a class="tile device d-mac rise" href="mac"><div class="device-pic">${pic("mac-alley.webp", 1800, 1125, "ClipShelf for Mac open at the bottom of the screen over a photo of a lantern-lit alley.")}</div><div class="device-text"><h3>ClipShelf for Mac</h3><p>Press Shift-Command-V in any app. Coming to the Mac App Store.</p></div></a>
+  <a class="tile device d-iphone rise" href="iphone"><div class="device-pic">${pic("iphone-travel.webp", 800, 1030, "A Travel pinboard on iPhone, holding a photo, a message, a link and a hotel address.")}</div><div class="device-text"><h3>ClipShelf for iPhone</h3><p>History, pinboards and a keyboard for any app.</p></div></a>
+  <a class="tile device d-ipad rise" href="iphone#ipad"><div class="device-pic">${pic("ipad.webp", 1400, 1867, "ClipShelf on iPad, with the list and the selected item side by side.")}</div><div class="device-text"><h3>ClipShelf for iPad</h3><p>The list and the item, side by side.</p></div></a>
+  <a class="tile device d-duo rise" href="iphone#ipad"><div class="device-pic">${pic("duo-open.webp", 1600, 1162, "ClipShelf on an open iPhone Duo, with the list on one side of the fold and a photo on the other.")}</div><div class="device-text"><h3>ClipShelf on iPhone Duo</h3><p>Open it to see the list and the item split at the fold. Close it to go back to the list.</p></div></a>
 </section>
 
 <section class="section-gap" aria-labelledby="try">

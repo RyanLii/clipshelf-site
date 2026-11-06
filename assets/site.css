@@ -232,7 +232,7 @@ code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.92em
 .blocks:hover span { transform: translateY(-4px); }
 .foot-cols { display: grid; grid-template-columns: repeat(12, 1fr); gap: 32px 16px; margin: 56px 16px 0; font-size: 15px; }
 .foot-cols > div { grid-column: span 3; }
-.foot-cols h2 { font-size: 15px; font-weight: 500; letter-spacing: 0; line-height: 1.45; color: var(--muted); margin-bottom: 8px; }
+.foot-label { font-weight: 500; color: var(--muted); margin-bottom: 8px; }
 .foot-cols a { text-decoration: none; display: inline-block; padding: 3px 0; transition: color .15s; }
 .foot-cols a:hover { color: var(--accent); }
 .foot-end { margin: 48px 16px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: var(--step-small); color: var(--muted); }
