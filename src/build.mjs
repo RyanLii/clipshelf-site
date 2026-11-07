@@ -8,7 +8,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://clipshelfapp.vercel.app";
 const IOS = "https://apps.apple.com/app/id6823508990";
 const ISSUES = "https://github.com/RyanLii/clipshelf-site/issues";
-const UPDATED = "2026-11-06";
+const UPDATED = "2026-11-07";
 
 const iosApp = {
   "@type": "MobileApplication",
@@ -63,20 +63,14 @@ function nav(current) {
 
 const foot = `<footer class="foot">
   <span>© 2026 Rui Li</span>
-  <ul>
-    <li><a href="mac">ClipShelf for Mac</a></li>
-    <li><a href="iphone">ClipShelf for iPhone</a></li>
-    <li><a href="support">Support</a></li>
-    <li><a href="privacy">Privacy Policy</a></li>
-    <li><a href="${IOS}">App Store</a></li>
-  </ul>
+  <a href="privacy">Privacy Policy</a>
 </footer>`;
 
 function page({ file, path, title, description, current, body, schema = [], ogType = "website", banner = true, head = "" }) {
   const url = `${SITE}/${path}`;
   const graph = { "@context": "https://schema.org", "@graph": [publisher, ...schema] };
   const html = `<!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -98,7 +92,6 @@ ${banner ? '<meta name="apple-itunes-app" content="app-id=6823508990">\n' : ""}$
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/general-sans-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
-<script src="assets/site.js" defer></script>
 <script type="application/ld+json">${JSON.stringify(graph)}</script>
 </head>
 <body>
@@ -116,18 +109,14 @@ ${foot}
 
 const pic = (src, w, h, alt, extra = "") =>
   `<img src="assets/img/${src}" width="${w}" height="${h}" alt="${alt}" ${extra}>`;
+const lazy = 'loading="lazy" decoding="async"';
+const split = (text, picture, flip = false) =>
+  `<section class="split${flip ? " flip" : ""}"><div>${text}</div>${picture}</section>`;
+const phone = (src, w, h, alt, extra = lazy) => pic(src, w, h, alt, `class="phone" ${extra}`);
+const ol = (items) => `<ol>${items.map((i) => `<li>${i}</li>`).join("")}</ol>`;
+const ul = (items) => `<ul>${items.map((i) => `<li>${i}</li>`).join("")}</ul>`;
 
 /* ---------- Home ---------- */
-const faqs = [
-  ["What is ClipShelf?", "ClipShelf is a clipboard manager for Mac, iPhone and iPad. It keeps the text, links and images you copy in a history you can search, so you can use them again. You can keep important items on named, colored pinboards, where they never expire."],
-  ["Does iPhone have a clipboard history?", "No. iOS remembers only the last thing you copied. ClipShelf adds a history, but iOS lets apps read the clipboard only while they are open. So ClipShelf saves what you copied when you open the app or its keyboard, when you tap its paste button, or when you share something to it."],
-  ["How do I see my clipboard history on a Mac?", "macOS also holds only one copied item. With ClipShelf on your Mac, press Shift-Command-V in any app to open your history at the bottom of the screen. Type to search, press Return to copy an item, then press Command-V to paste it."],
-  ["Is ClipShelf free?", "ClipShelf for iPhone and iPad is free on the App Store, with no in-app purchases and no ads. ClipShelf for Mac is a separate paid app with a one-time price and no subscription. It is in App Review now."],
-  ["Is it safe to keep my clipboard in an app?", "ClipShelf has no accounts and no servers of its own, and it does not use analytics or advertising. Your history stays on your devices. On Mac it skips content that apps mark as confidential, such as passwords from password managers, and content from apps you choose to ignore."],
-  ["How does sync between Mac and iPhone work?", "Sync is off until you turn it on. When it is on, ClipShelf uses the private database of your own iCloud account, so the developer cannot read it. Turn on sync on each device and sign in to the same iCloud account. You can sync everything or only your pinboards."],
-];
-const q = (question, answer) => `<div class="q rise"><h3>${question}</h3><div><p>${answer}</p></div></div>`;
-
 page({
   file: "index.html",
   path: "",
@@ -142,40 +131,13 @@ page({
   ],
   body: `<section class="hero">
   <h1>ClipShelf</h1>
-  <div class="hero-row">
-    <p>A clipboard manager for iPhone, iPad and Mac. Everything you copy, kept on a shelf you can search.</p>
-    <a class="button" href="${IOS}">Get it on the App Store</a>
-  </div>
-  ${pic("mac-shelf.webp", 1800, 369, "The ClipShelf shelf on a Mac, with copied photos, text, code, a link and a color laid out as cards.", 'class="shot" fetchpriority="high" decoding="async"')}
+  <p>Clipboard history for Mac, iPhone and iPad.</p>
+  ${pic("mac-shelf.webp", 1800, 369, "The ClipShelf shelf on a Mac, with copied photos, text, code, a link and a color laid out as cards.", 'fetchpriority="high" decoding="async"')}
 </section>
-
-<section class="split" aria-labelledby="mac-h">
-  <div class="split-text rise"><h2 id="mac-h">One shortcut on your Mac</h2><p>Press Shift-Command-V in any app, and your clipboard history opens at the bottom of the screen. Type to search, then copy what you need. Coming to the Mac App Store.</p><a class="more" href="mac">More about ClipShelf for Mac</a></div>
-  <div class="split-pic rise">${pic("mac-shibuya.webp", 1800, 1125, "ClipShelf for Mac open over a photo of Shibuya at night.", 'class="shot" loading="lazy" decoding="async"')}</div>
-</section>
-
-<section class="split flip" aria-labelledby="ios-h">
-  <div class="split-text rise"><h2 id="ios-h">In your pocket on iPhone</h2><p>Save text, links and images, pin what matters, and type any item from the ClipShelf keyboard in any app. On iPad and iPhone Duo, the list and the item sit side by side. Free on the App Store.</p><a class="more" href="iphone">More about ClipShelf for iPhone</a></div>
-  <div class="split-pic rise">${pic("iphone-list.webp", 800, 1067, "ClipShelf on iPhone: a searchable list of copied items with pinboard tabs above it.", 'class="phone" loading="lazy" decoding="async"')}</div>
-</section>
-
-<section class="points" aria-labelledby="why">
-  <h2 id="why" class="rise">Simple on purpose</h2>
-  <div class="rise"><h3>Pinboards</h3><p>Keep items on named, colored boards. Pinned items never expire.</p></div>
-  <div class="rise"><h3>iCloud sync</h3><p>Off until you turn it on, and it only uses your own private iCloud.</p></div>
-  <div class="rise"><h3>Private</h3><p>No account, no ads and no tracking. Your history stays yours.</p></div>
-</section>
-
-<section class="faq" id="questions" aria-labelledby="q">
-  <h2 id="q" class="rise">Common questions</h2>
-  ${faqs.map(([question, answer]) => q(question, answer)).join("\n  ")}
-</section>
-
-<section class="close rise" aria-labelledby="get">
-  <h2 id="get">Stop copying things twice</h2>
-  <p>ClipShelf is free on iPhone and iPad, and works with ClipShelf for Mac through your own iCloud.</p>
-  <a class="button" href="${IOS}">Get it on the App Store</a>
-</section>`,
+${split(`<h2>Mac</h2><p>Press Shift-Command-V in any app. Coming to the Mac App Store.</p><p><a href="mac">ClipShelf for Mac</a></p>`,
+  pic("mac-shibuya.webp", 1800, 1125, "ClipShelf for Mac open over a photo of Shibuya at night.", lazy))}
+${split(`<h2>iPhone and iPad</h2><p>Free, with a keyboard for any app.</p><p><a class="button" href="${IOS}">Get it on the App Store</a></p><p><a href="iphone">ClipShelf for iPhone</a></p>`,
+  phone("iphone-list.webp", 800, 1067, "ClipShelf on iPhone: a searchable list of copied items with pinboard tabs above it."), true)}`,
 });
 
 /* ---------- Mac ---------- */
@@ -187,37 +149,19 @@ page({
   current: "mac",
   banner: false,
   schema: [macApp, crumbs("ClipShelf for Mac", "mac")],
-  body: `<section class="page-hero">
+  body: `<section class="hero">
   <h1>Clipboard manager for Mac</h1>
-  <p>Everything you copy is one shortcut away. ClipShelf for Mac is in App Review and coming to the Mac App Store.</p>
-  ${pic("mac-shibuya.webp", 1800, 1125, "ClipShelf for Mac open at the bottom of the screen, showing copied items as cards.", 'class="shot" fetchpriority="high" decoding="async"')}
+  <p>Coming to the Mac App Store.</p>
+  ${pic("mac-shibuya.webp", 1800, 1125, "ClipShelf for Mac open at the bottom of the screen, showing copied items as cards.", 'fetchpriority="high" decoding="async"')}
 </section>
-
-<section class="split" aria-labelledby="how-mac">
-  <div class="split-text rise"><h2 id="how-mac">How to see clipboard history on a Mac</h2><p>macOS has no built-in clipboard history. Once ClipShelf is running, it stays in the menu bar and saves what you copy from then on.</p><ol class="steps">
-    <li>Copy something in any app, as you normally do.</li>
-    <li>Press Shift-Command-V. Your history opens at the bottom of the screen, newest first.</li>
-    <li>Type a few words to search, or use the arrow keys to pick an item.</li>
-    <li>Press Return to copy the item, then press Command-V where you want it.</li>
-  </ol></div>
-  <div class="split-pic rise">${pic("mac-shelf.webp", 1800, 369, "Seven clip cards: a photo, a message, Swift code, a link preview, a photo, a color and a terminal command.", 'class="shot" loading="lazy" decoding="async"')}</div>
-</section>
-
-<section class="split flip" aria-labelledby="stack">
-  <div class="split-text rise"><h2 id="stack">Paste in order with Paste Stack</h2><p>Filling in a form or moving several values? Press Control-Command-C, copy each item, then press Command-V to paste them one by one. You choose copy order or newest first.</p></div>
-  <div class="split-pic rise">${pic("mac-stack.webp", 1000, 862, "The Paste Stack panel with four items waiting to be pasted in order.", 'class="shot" loading="lazy" decoding="async"')}</div>
-</section>
-
-<section class="split" aria-labelledby="all">
-  <div class="split-text rise"><h2 id="all">Everything you copy, in control</h2><ul class="list">
-    <li>Text, rich text, links, colors, images and files, with their original formatting.</li>
-    <li>Text in copied images is recognized on your Mac, so you can search for it.</li>
-    <li>Filter by type, app and date. Press Space for a full preview.</li>
-    <li>Confidential content from password managers is skipped, and you can ignore any app.</li>
-    <li>The shelf is hidden from screen sharing unless you turn that on.</li>
-    <li>Copying the same content again moves it to the top, so duplicates do not pile up.</li>
-  </ul></div>
-  <div class="split-pic rise" id="keys"><h2 class="keys-title">Keyboard shortcuts</h2><table class="keys">
+<section class="columns">
+  <div><h2>How to see clipboard history on a Mac</h2>${ol([
+    "Copy something in any app.",
+    "Press Shift-Command-V. Your history opens, newest first.",
+    "Type to search, or use the arrow keys.",
+    "Press Return to copy the item, then Command-V to paste it.",
+  ])}</div>
+  <div><h2>Keyboard shortcuts</h2><table>
     <tr><th scope="row">Shift-Command-V</th><td>Open the shelf</td></tr>
     <tr><th scope="row">Return</th><td>Copy the selected item</td></tr>
     <tr><th scope="row">Command-1 to 9</th><td>Copy item 1 to 9</td></tr>
@@ -227,14 +171,16 @@ page({
     <tr><th scope="row">Control-Command-C</th><td>Turn Paste Stack on or off</td></tr>
   </table></div>
 </section>
-
-<section class="faq" aria-labelledby="q">
-  <h2 id="q" class="rise">Mac questions</h2>
-  ${q("Which Macs does it run on?", "ClipShelf for Mac needs macOS 14 Sonoma or later.")}
-  ${q("How long is my history kept?", "You choose: a day, a week, a month, a year or forever. Pinned items never expire.")}
-  ${q("How much does it cost?", "ClipShelf for Mac is a paid app with a one-time price, no subscription and no in-app purchases. The price for your country will show on the Mac App Store.")}
-  ${q("Can I use it with my iPhone?", 'Yes. <a href="iphone">ClipShelf for iPhone</a> is free. Turn on iCloud sync on both devices to share your history or only your pinboards.')}
-</section>`,
+${split(`<h2>Paste in order</h2><p>Press Control-Command-C, copy each item, then press Command-V to paste them one by one.</p>`,
+  pic("mac-stack.webp", 1000, 862, "The Paste Stack panel with four items waiting to be pasted in order.", lazy))}
+<section class="plain"><h2>Details</h2>${ul([
+    "Text, rich text, links, colors, images and files.",
+    "Search text inside copied images. Recognition runs on your Mac.",
+    "Filter by type, app and date.",
+    "Skips confidential content, and any app you choose to ignore.",
+    "Hidden from screen sharing unless you turn that on.",
+    "macOS 14 or later. One-time price, no subscription.",
+  ])}</section>`,
 });
 
 /* ---------- iPhone ---------- */
@@ -245,57 +191,38 @@ page({
   description: "Keep a clipboard history on iPhone and iPad. Save text, links and images, pin them to boards and type them from the ClipShelf keyboard. Free, with no ads.",
   current: "iphone",
   schema: [iosApp, crumbs("ClipShelf for iPhone and iPad", "iphone")],
-  body: `<section class="page-hero">
-  <h1>Clipboard history for iPhone</h1>
-  <p>Save what you copy, find it again and type it in any app. Free on the App Store.</p>
-  <a class="button" href="${IOS}">Get it on the App Store</a>
-</section>
-
-<section class="split" aria-labelledby="save">
-  <div class="split-text rise"><h2 id="save">Three ways to save what you copy</h2><p>iOS remembers only the last thing you copied, and it lets apps read the clipboard only while they are open. So ClipShelf gives you three clear ways in:</p><ul class="list">
-    <li>Open ClipShelf or its keyboard after you copy. You can turn this off.</li>
-    <li>Tap the paste button inside ClipShelf.</li>
-    <li>Share text, a link or an image to ClipShelf from any app.</li>
-  </ul></div>
-  <div class="split-pic rise">${pic("iphone-list.webp", 800, 1067, "ClipShelf on iPhone with a list of copied items and pinboard tabs.", 'class="phone" fetchpriority="high" decoding="async"')}</div>
-</section>
-
-<section class="split flip" aria-labelledby="pin">
-  <div class="split-text rise"><h2 id="pin">Pinboards for what you keep</h2><p>Addresses, booking codes, replies and code all have a place. Keep them on named, colored pinboards. Pinned items never expire, however long you keep your history: a day, a week, a month, a year or forever.</p></div>
-  <div class="split-pic rise">${pic("iphone-travel.webp", 800, 1030, "A Travel pinboard with a photo, a message, a link and a hotel address.", 'class="phone" loading="lazy" decoding="async"')}</div>
-</section>
-
-<section class="split" aria-labelledby="setup-kb">
-  <div class="split-text rise"><h2 id="setup-kb">How to turn on the ClipShelf keyboard</h2><p>The keyboard shows your recent items and pinboards in any app. It does not record what you type, and it does not use the network.</p><ol class="steps">
-    <li>Open iPhone Settings, then General, Keyboard and Keyboards.</li>
-    <li>Tap Add New Keyboard and choose ClipShelf.</li>
-    <li>Tap ClipShelf in the list and turn on Allow Full Access, so it can read your history.</li>
-    <li>In any app, switch to the ClipShelf keyboard with the globe key, then tap an item to type it.</li>
-  </ol></div>
-  <div class="split-pic rise">${pic("iphone-code.webp", 800, 1067, "A Code pinboard on iPhone with code, a git command, a link and JSON.", 'class="phone" loading="lazy" decoding="async"')}</div>
-</section>
-
-<section class="split flip" id="ipad" aria-labelledby="wide">
-  <div class="split-text rise"><h2 id="wide">Made for iPad and iPhone Duo</h2><p>On iPad, the list and the item sit side by side. On iPhone Duo, opening the device splits them at the fold, and closing it goes back to the list. ClipShelf needs iOS 17 or iPadOS 17 or later.</p></div>
-  <div class="split-pic rise">${pic("ipad.webp", 1400, 1867, "ClipShelf on iPad, with the list and the selected item side by side.", 'class="phone" loading="lazy" decoding="async"')}</div>
-</section>
-
-<section class="faq" aria-labelledby="q">
-  <h2 id="q" class="rise">iPhone questions</h2>
-  ${q("Why does ClipShelf not save everything by itself?", "iOS does not let any app watch the clipboard in the background. ClipShelf saves what you copied when you open it or its keyboard, when you tap its paste button, or when you share something to it.")}
-  ${q("How do I sync iPhone and Mac?", "Sign in to the same iCloud account on each device, then open Settings in ClipShelf and turn on Sync. Choose everything, or pinboards only. Use Sync Now when you want it to happen at once.")}
-  ${q("Is ClipShelf free on iPhone?", "Yes. ClipShelf for iPhone and iPad is free, with no in-app purchases and no ads.")}
-  ${q("Where is my data stored?", 'On your device. If you turn on sync, it is also stored in the private database of your own iCloud account. There are no accounts and no servers of our own. See the <a href="privacy">Privacy Policy</a>.')}
-</section>
-
-<section class="close rise" aria-labelledby="get">
-  <h2 id="get">Keep what you copy</h2>
-  <p>Free on iPhone and iPad. No account needed.</p>
-  <a class="button" href="${IOS}">Get it on the App Store</a>
-</section>`,
+  body: `${split(`<h1>Clipboard history for iPhone</h1><p>Free, with no ads.</p><p><a class="button" href="${IOS}">Get it on the App Store</a></p>`,
+    phone("iphone-list.webp", 800, 1067, "ClipShelf on iPhone with a list of copied items and pinboard tabs.", 'fetchpriority="high" decoding="async"'))}
+${split(`<h2>Save it, pin it</h2>${ul([
+    "Open ClipShelf or its keyboard after you copy.",
+    "Tap the paste button inside ClipShelf.",
+    "Share text, a link or an image to ClipShelf from any app.",
+  ])}<p>Pinned items never expire.</p>`,
+    phone("iphone-travel.webp", 800, 1030, "A Travel pinboard with a photo, a message, a link and a hotel address."), true)}
+${split(`<h2>How to turn on the ClipShelf keyboard</h2>${ol([
+    "Open Settings, then General, Keyboard and Keyboards.",
+    "Tap Add New Keyboard and choose ClipShelf.",
+    "Tap ClipShelf and turn on Allow Full Access, so it can read your history.",
+    "In any app, switch keyboards with the globe key, then tap an item.",
+  ])}`,
+    phone("iphone-code.webp", 800, 1067, "A Code pinboard on iPhone with code, a git command, a link and JSON."))}
+${split(`<h2 id="ipad">iPad and iPhone Duo</h2><p>The list and the item sit side by side. On iPhone Duo they split at the fold. iOS 17 or iPadOS 17 or later.</p>`,
+    phone("ipad.webp", 1400, 1867, "ClipShelf on iPad, with the list and the selected item side by side."), true)}`,
 });
 
 /* ---------- Support ---------- */
+const answers = [
+  ["What is ClipShelf?", "ClipShelf is a clipboard manager for Mac, iPhone and iPad. It keeps the text, links and images you copy in a history you can search, so you can use them again. You can keep important items on named, colored pinboards, where they never expire."],
+  ["How do I see my clipboard history on a Mac?", "macOS holds only one copied item. With ClipShelf on your Mac, press Shift-Command-V in any app to open your history at the bottom of the screen. Type to search, press Return to copy an item, then press Command-V to paste it."],
+  ["Does iPhone have a clipboard history?", "No. iOS remembers only the last thing you copied, and it lets apps read the clipboard only while they are open. So ClipShelf saves what you copied when you open the app or its keyboard, when you tap its paste button, or when you share something to it."],
+  ["The keyboard shows no items", "In iPhone Settings &gt; General &gt; Keyboard &gt; Keyboards &gt; ClipShelf, turn on Allow Full Access. The keyboard needs it to read your ClipShelf history. It does not record what you type, and it does not use the network."],
+  ["How do I sync Mac and iPhone?", "Sync is off until you turn it on. Sign in to the same iCloud account on each device, then turn on Settings &gt; Sync on each one. Choose everything, or pinboards only. Use Sync Now to sync at once."],
+  ["My items do not sync", "Check that sync is on and that each device uses the same iCloud account. With “Pinboards only”, only pinned items sync."],
+  ["How much does it cost?", "ClipShelf for iPhone and iPad is free on the App Store, with no in-app purchases and no ads. ClipShelf for Mac is a separate paid app with a one-time price, no subscription and no in-app purchases. It is in App Review now, and the price for your country will show on the Mac App Store."],
+  ["Is it safe to keep my clipboard in an app?", 'ClipShelf has no accounts and no servers of its own, and it does not use analytics or advertising. Your history stays on your devices and, if you turn on sync, in the private database of your own iCloud account, so the developer cannot read it. On Mac it skips content that apps mark as confidential, such as passwords from password managers, and content from apps you choose to ignore. See the <a href="privacy">Privacy Policy</a>.'],
+  ["How long is my history kept?", "You choose: a day, a week, a month, a year or forever. Pinned items never expire."],
+  ["Which devices does it run on?", "ClipShelf for Mac needs macOS 14 Sonoma or later. ClipShelf for iPhone and iPad needs iOS 17 or iPadOS 17 or later."],
+];
 page({
   file: "support.html",
   path: "support",
@@ -306,15 +233,7 @@ page({
   schema: [crumbs("Support", "support")],
   body: `<article class="doc">
   <h1>Support</h1>
-  <p>Help with ClipShelf for Mac, iPhone and iPad.</p>
-  <h2>My items do not sync between Mac and iPhone</h2>
-  <p>Turn on Settings &gt; Sync on each device, and sign in to the same iCloud account. Use Sync Now to sync at once. With "Pinboards only", only pinned items sync.</p>
-  <h2>The keyboard shows no items</h2>
-  <p>In iPhone Settings &gt; General &gt; Keyboard &gt; Keyboards &gt; ClipShelf, turn on Allow Full Access. The keyboard needs it to read your ClipShelf history.</p>
-  <h2>iPhone does not save what I copied</h2>
-  <p>iOS lets apps read the clipboard only while they are open. Open ClipShelf or its keyboard after you copy, tap the paste button, or share the content to ClipShelf.</p>
-  <h2>How do I paste on Mac?</h2>
-  <p>Press Shift-Command-V, pick an item and press Return to copy it, then press Command-V in your app.</p>
+  ${answers.map(([q, a]) => `<h2>${q}</h2>\n  <p>${a}</p>`).join("\n  ")}
   <h2>Contact</h2>
   <p>Report a problem or ask a question by <a href="${ISSUES}">opening an issue on GitHub</a>. Please include your device, system version and ClipShelf version.</p>
 </article>`,
@@ -373,7 +292,7 @@ page({
   description: "This page does not exist.",
   current: "",
   banner: false,
-  body: `<article class="doc"><h1>Nothing on this shelf</h1><p>This page does not exist. Go to the <a href="./">ClipShelf home page</a>.</p></article>`,
+  body: `<article class="doc"><h1>Page not found</h1><p><a href="./">Go to the home page</a></p></article>`,
 });
 
 /* ---------- Crawl files ---------- */

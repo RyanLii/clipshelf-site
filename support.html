@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,6 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/general-sans-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
-<script src="assets/site.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://clipshelfapp.vercel.app/#publisher","name":"Rui Li","url":"https://clipshelfapp.vercel.app/"},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ClipShelf","item":"https://clipshelfapp.vercel.app/"},{"@type":"ListItem","position":2,"name":"Support","item":"https://clipshelfapp.vercel.app/support"}]}]}</script>
 </head>
 <body>
@@ -37,28 +36,33 @@
 <main id="main">
 <article class="doc">
   <h1>Support</h1>
-  <p>Help with ClipShelf for Mac, iPhone and iPad.</p>
-  <h2>My items do not sync between Mac and iPhone</h2>
-  <p>Turn on Settings &gt; Sync on each device, and sign in to the same iCloud account. Use Sync Now to sync at once. With "Pinboards only", only pinned items sync.</p>
+  <h2>What is ClipShelf?</h2>
+  <p>ClipShelf is a clipboard manager for Mac, iPhone and iPad. It keeps the text, links and images you copy in a history you can search, so you can use them again. You can keep important items on named, colored pinboards, where they never expire.</p>
+  <h2>How do I see my clipboard history on a Mac?</h2>
+  <p>macOS holds only one copied item. With ClipShelf on your Mac, press Shift-Command-V in any app to open your history at the bottom of the screen. Type to search, press Return to copy an item, then press Command-V to paste it.</p>
+  <h2>Does iPhone have a clipboard history?</h2>
+  <p>No. iOS remembers only the last thing you copied, and it lets apps read the clipboard only while they are open. So ClipShelf saves what you copied when you open the app or its keyboard, when you tap its paste button, or when you share something to it.</p>
   <h2>The keyboard shows no items</h2>
-  <p>In iPhone Settings &gt; General &gt; Keyboard &gt; Keyboards &gt; ClipShelf, turn on Allow Full Access. The keyboard needs it to read your ClipShelf history.</p>
-  <h2>iPhone does not save what I copied</h2>
-  <p>iOS lets apps read the clipboard only while they are open. Open ClipShelf or its keyboard after you copy, tap the paste button, or share the content to ClipShelf.</p>
-  <h2>How do I paste on Mac?</h2>
-  <p>Press Shift-Command-V, pick an item and press Return to copy it, then press Command-V in your app.</p>
+  <p>In iPhone Settings &gt; General &gt; Keyboard &gt; Keyboards &gt; ClipShelf, turn on Allow Full Access. The keyboard needs it to read your ClipShelf history. It does not record what you type, and it does not use the network.</p>
+  <h2>How do I sync Mac and iPhone?</h2>
+  <p>Sync is off until you turn it on. Sign in to the same iCloud account on each device, then turn on Settings &gt; Sync on each one. Choose everything, or pinboards only. Use Sync Now to sync at once.</p>
+  <h2>My items do not sync</h2>
+  <p>Check that sync is on and that each device uses the same iCloud account. With “Pinboards only”, only pinned items sync.</p>
+  <h2>How much does it cost?</h2>
+  <p>ClipShelf for iPhone and iPad is free on the App Store, with no in-app purchases and no ads. ClipShelf for Mac is a separate paid app with a one-time price, no subscription and no in-app purchases. It is in App Review now, and the price for your country will show on the Mac App Store.</p>
+  <h2>Is it safe to keep my clipboard in an app?</h2>
+  <p>ClipShelf has no accounts and no servers of its own, and it does not use analytics or advertising. Your history stays on your devices and, if you turn on sync, in the private database of your own iCloud account, so the developer cannot read it. On Mac it skips content that apps mark as confidential, such as passwords from password managers, and content from apps you choose to ignore. See the <a href="privacy">Privacy Policy</a>.</p>
+  <h2>How long is my history kept?</h2>
+  <p>You choose: a day, a week, a month, a year or forever. Pinned items never expire.</p>
+  <h2>Which devices does it run on?</h2>
+  <p>ClipShelf for Mac needs macOS 14 Sonoma or later. ClipShelf for iPhone and iPad needs iOS 17 or iPadOS 17 or later.</p>
   <h2>Contact</h2>
   <p>Report a problem or ask a question by <a href="https://github.com/RyanLii/clipshelf-site/issues">opening an issue on GitHub</a>. Please include your device, system version and ClipShelf version.</p>
 </article>
 </main>
 <footer class="foot">
   <span>© 2026 Rui Li</span>
-  <ul>
-    <li><a href="mac">ClipShelf for Mac</a></li>
-    <li><a href="iphone">ClipShelf for iPhone</a></li>
-    <li><a href="support">Support</a></li>
-    <li><a href="privacy">Privacy Policy</a></li>
-    <li><a href="https://apps.apple.com/app/id6823508990">App Store</a></li>
-  </ul>
+  <a href="privacy">Privacy Policy</a>
 </footer>
 </body>
 </html>

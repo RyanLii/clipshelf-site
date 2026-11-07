@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +21,6 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/general-sans-500.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
-<script src="assets/site.js" defer></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Person","@id":"https://clipshelfapp.vercel.app/#publisher","name":"Rui Li","url":"https://clipshelfapp.vercel.app/"},{"@type":"SoftwareApplication","@id":"https://clipshelfapp.vercel.app/mac#app","name":"ClipShelf for Mac","url":"https://clipshelfapp.vercel.app/mac","operatingSystem":"macOS 14 or later","applicationCategory":"ProductivityApplication","description":"A clipboard manager for Mac: open your clipboard history with Shift-Command-V, search it, pin items and paste a stack in order.","image":"https://clipshelfapp.vercel.app/assets/img/icon-192.png","screenshot":["https://clipshelfapp.vercel.app/assets/img/mac-mountain.webp","https://clipshelfapp.vercel.app/assets/img/mac-shibuya.webp"],"publisher":{"@id":"https://clipshelfapp.vercel.app/#publisher"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ClipShelf","item":"https://clipshelfapp.vercel.app/"},{"@type":"ListItem","position":2,"name":"ClipShelf for Mac","item":"https://clipshelfapp.vercel.app/mac"}]}]}</script>
 </head>
 <body>
@@ -35,37 +34,14 @@
   </nav>
 </header>
 <main id="main">
-<section class="page-hero">
+<section class="hero">
   <h1>Clipboard manager for Mac</h1>
-  <p>Everything you copy is one shortcut away. ClipShelf for Mac is in App Review and coming to the Mac App Store.</p>
-  <img src="assets/img/mac-shibuya.webp" width="1800" height="1125" alt="ClipShelf for Mac open at the bottom of the screen, showing copied items as cards." class="shot" fetchpriority="high" decoding="async">
+  <p>Coming to the Mac App Store.</p>
+  <img src="assets/img/mac-shibuya.webp" width="1800" height="1125" alt="ClipShelf for Mac open at the bottom of the screen, showing copied items as cards." fetchpriority="high" decoding="async">
 </section>
-
-<section class="split" aria-labelledby="how-mac">
-  <div class="split-text rise"><h2 id="how-mac">How to see clipboard history on a Mac</h2><p>macOS has no built-in clipboard history. Once ClipShelf is running, it stays in the menu bar and saves what you copy from then on.</p><ol class="steps">
-    <li>Copy something in any app, as you normally do.</li>
-    <li>Press Shift-Command-V. Your history opens at the bottom of the screen, newest first.</li>
-    <li>Type a few words to search, or use the arrow keys to pick an item.</li>
-    <li>Press Return to copy the item, then press Command-V where you want it.</li>
-  </ol></div>
-  <div class="split-pic rise"><img src="assets/img/mac-shelf.webp" width="1800" height="369" alt="Seven clip cards: a photo, a message, Swift code, a link preview, a photo, a color and a terminal command." class="shot" loading="lazy" decoding="async"></div>
-</section>
-
-<section class="split flip" aria-labelledby="stack">
-  <div class="split-text rise"><h2 id="stack">Paste in order with Paste Stack</h2><p>Filling in a form or moving several values? Press Control-Command-C, copy each item, then press Command-V to paste them one by one. You choose copy order or newest first.</p></div>
-  <div class="split-pic rise"><img src="assets/img/mac-stack.webp" width="1000" height="862" alt="The Paste Stack panel with four items waiting to be pasted in order." class="shot" loading="lazy" decoding="async"></div>
-</section>
-
-<section class="split" aria-labelledby="all">
-  <div class="split-text rise"><h2 id="all">Everything you copy, in control</h2><ul class="list">
-    <li>Text, rich text, links, colors, images and files, with their original formatting.</li>
-    <li>Text in copied images is recognized on your Mac, so you can search for it.</li>
-    <li>Filter by type, app and date. Press Space for a full preview.</li>
-    <li>Confidential content from password managers is skipped, and you can ignore any app.</li>
-    <li>The shelf is hidden from screen sharing unless you turn that on.</li>
-    <li>Copying the same content again moves it to the top, so duplicates do not pile up.</li>
-  </ul></div>
-  <div class="split-pic rise" id="keys"><h2 class="keys-title">Keyboard shortcuts</h2><table class="keys">
+<section class="columns">
+  <div><h2>How to see clipboard history on a Mac</h2><ol><li>Copy something in any app.</li><li>Press Shift-Command-V. Your history opens, newest first.</li><li>Type to search, or use the arrow keys.</li><li>Press Return to copy the item, then Command-V to paste it.</li></ol></div>
+  <div><h2>Keyboard shortcuts</h2><table>
     <tr><th scope="row">Shift-Command-V</th><td>Open the shelf</td></tr>
     <tr><th scope="row">Return</th><td>Copy the selected item</td></tr>
     <tr><th scope="row">Command-1 to 9</th><td>Copy item 1 to 9</td></tr>
@@ -75,24 +51,12 @@
     <tr><th scope="row">Control-Command-C</th><td>Turn Paste Stack on or off</td></tr>
   </table></div>
 </section>
-
-<section class="faq" aria-labelledby="q">
-  <h2 id="q" class="rise">Mac questions</h2>
-  <div class="q rise"><h3>Which Macs does it run on?</h3><div><p>ClipShelf for Mac needs macOS 14 Sonoma or later.</p></div></div>
-  <div class="q rise"><h3>How long is my history kept?</h3><div><p>You choose: a day, a week, a month, a year or forever. Pinned items never expire.</p></div></div>
-  <div class="q rise"><h3>How much does it cost?</h3><div><p>ClipShelf for Mac is a paid app with a one-time price, no subscription and no in-app purchases. The price for your country will show on the Mac App Store.</p></div></div>
-  <div class="q rise"><h3>Can I use it with my iPhone?</h3><div><p>Yes. <a href="iphone">ClipShelf for iPhone</a> is free. Turn on iCloud sync on both devices to share your history or only your pinboards.</p></div></div>
-</section>
+<section class="split"><div><h2>Paste in order</h2><p>Press Control-Command-C, copy each item, then press Command-V to paste them one by one.</p></div><img src="assets/img/mac-stack.webp" width="1000" height="862" alt="The Paste Stack panel with four items waiting to be pasted in order." loading="lazy" decoding="async"></section>
+<section class="plain"><h2>Details</h2><ul><li>Text, rich text, links, colors, images and files.</li><li>Search text inside copied images. Recognition runs on your Mac.</li><li>Filter by type, app and date.</li><li>Skips confidential content, and any app you choose to ignore.</li><li>Hidden from screen sharing unless you turn that on.</li><li>macOS 14 or later. One-time price, no subscription.</li></ul></section>
 </main>
 <footer class="foot">
   <span>© 2026 Rui Li</span>
-  <ul>
-    <li><a href="mac">ClipShelf for Mac</a></li>
-    <li><a href="iphone">ClipShelf for iPhone</a></li>
-    <li><a href="support">Support</a></li>
-    <li><a href="privacy">Privacy Policy</a></li>
-    <li><a href="https://apps.apple.com/app/id6823508990">App Store</a></li>
-  </ul>
+  <a href="privacy">Privacy Policy</a>
 </footer>
 </body>
 </html>
