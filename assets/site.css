@@ -7,7 +7,7 @@
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--ink); font: 400 1.0625rem/1.5 "General Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
 main, .top, .foot { max-width: 1200px; margin-inline: auto; padding-inline: var(--edge); }
-img { display: block; width: 100%; height: auto; border-radius: 12px; }
+img, video { display: block; width: 100%; height: auto; border-radius: 12px; }
 a { color: inherit; text-underline-offset: 3px; }
 a:hover { color: var(--accent); }
 h1, h2, p, ul, ol, table { margin: 0; }
@@ -32,7 +32,7 @@ ul, ol { padding-left: 1.3em; display: grid; gap: 8px; }
 
 .hero { padding-top: clamp(32px, 6vw, 72px); }
 .hero p { margin-top: 12px; color: var(--muted); font-size: clamp(1.125rem, 2vw, 1.375rem); }
-.hero img { margin-top: clamp(32px, 5vw, 56px); }
+.hero img, .hero video { margin-top: clamp(32px, 5vw, 56px); }
 
 .split, .columns { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; padding-top: var(--gap); }
 .columns { align-items: start; }
