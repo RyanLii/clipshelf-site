@@ -132,7 +132,7 @@ page({
   body: `<section class="hero">
   <h1>ClipShelf</h1>
   <p>Clipboard history for Mac, iPhone and iPad.</p>
-  <video controls playsinline preload="none" width="1920" height="1080" poster="assets/img/film-poster.jpg" aria-label="A 21-second film of ClipShelf on a Mac and an iPhone."><source src="assets/video/clipshelf.mp4" type="video/mp4"></video>
+  <video controls playsinline preload="none" width="1920" height="1080" poster="assets/img/film-poster.jpg" aria-label="A 27-second video of ClipShelf on a Mac and an iPhone."><source src="assets/video/clipshelf.mp4" type="video/mp4"></video>
 </section>
 ${split(`<h2>Mac</h2><p>Press Shift-Command-V in any app. Coming to the Mac App Store.</p><p><a href="mac">ClipShelf for Mac</a></p>`,
   pic("mac-shibuya.webp", 1800, 1125, "ClipShelf for Mac open over a photo of Shibuya at night.", lazy))}
