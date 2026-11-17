@@ -66,7 +66,7 @@ function nav(current) {
 
 const foot = `<footer class="foot">
   <span>© 2026 Rui Li</span>
-  <a href="privacy">Privacy Policy</a>
+  <span class="foot-links"><a href="vs-paste">ClipShelf vs Paste</a><a href="vs-maccy">ClipShelf vs Maccy</a><a href="privacy">Privacy Policy</a></span>
 </footer>`;
 
 function page({ file, path, title, description, current, body, schema = [], ogType = "website", banner = true, head = "" }) {
@@ -287,6 +287,91 @@ page({
 </article>`,
 });
 
+/* ---------- Comparisons ---------- */
+// Competitor facts only from their own pages or the App Store, checked on CHECKED.
+// Where their page does not say something, the table says "Not stated" rather than "No".
+const CHECKED = "17 November 2026";
+const compare = ({ file, path, name, title, description, intro, rows, theyWin, weWin, sources }) => page({
+  file, path, title, description, current: "", banner: false,
+  schema: [crumbs(`ClipShelf vs ${name}`, path)],
+  body: `<article class="doc">
+  <h1>ClipShelf vs ${name}</h1>
+  <p>${intro}</p>
+  <table class="compare">
+    <thead><tr><th scope="col"></th><th scope="col">ClipShelf</th><th scope="col">${name}</th></tr></thead>
+    <tbody>${rows.map(([k, a, b]) => `<tr><th scope="row">${k}</th><td>${a}</td><td>${b}</td></tr>`).join("")}</tbody>
+  </table>
+  <h2>Choose ${name} if</h2>${ul(theyWin)}
+  <h2>Choose ClipShelf if</h2>${ul(weWin)}
+  <p class="buttons"><a class="button" href="${MAC}">ClipShelf for Mac</a><a class="button" href="${IOS}">ClipShelf for iPhone</a></p>
+  <p class="small">Prices and features checked on ${CHECKED} from ${sources}. Prices can differ by country. If something here is out of date, <a href="${ISSUES}">open an issue</a> and it will be fixed.</p>
+</article>`,
+});
+
+compare({
+  file: "vs-paste.html",
+  path: "vs-paste",
+  name: "Paste",
+  title: "ClipShelf vs Paste: Clipboard Manager Price and Features Compared",
+  description: "ClipShelf and Paste both keep clipboard history on Mac, iPhone and iPad with iCloud sync. Paste is a subscription; ClipShelf is free on iPhone and a one-time price on Mac.",
+  intro: "Both apps keep your clipboard history on Mac, iPhone and iPad, sync it through your own iCloud, and let you pin items to boards. The main difference is how you pay.",
+  rows: [
+    ["Price on Mac", "US$0.49 once (A$0.99)", "US$29.99 a year, after a 7-day trial"],
+    ["Price on iPhone and iPad", "Free", "Included in the same subscription"],
+    ["Subscription", "None", "Yes"],
+    ["Platforms", "Mac, iPhone, iPad", "Mac, iPhone, iPad"],
+    ["Sync", "Your own iCloud", "Your own iCloud"],
+    ["Pinboards", "Yes", "Yes"],
+    ["Paste several items in order", "Yes, Paste Stack", "Not stated"],
+    ["Search text inside copied images", "Yes, on Mac", "Not stated"],
+    ["Keyboard for any app on iPhone", "Yes", "Not stated"],
+    ["Shared pinboards for a team", "No", "Yes, Team plan"],
+    ["Family plan", "Not needed", "Yes, up to six people"],
+  ],
+  theyWin: [
+    "You want to share pinboards with a team.",
+    "You want a long-established app with many reviews.",
+    "You want your clipboard history connected to AI tools, which Paste offers.",
+  ],
+  weWin: [
+    "You don't want a subscription for a clipboard.",
+    "You want the iPhone app free and the Mac app for about a dollar, once.",
+    "You paste lists in order, or search for text inside screenshots you copied.",
+  ],
+  sources: '<a href="https://pasteapp.io/pricing">pasteapp.io/pricing</a> and <a href="https://pasteapp.io/">pasteapp.io</a>',
+});
+
+compare({
+  file: "vs-maccy.html",
+  path: "vs-maccy",
+  name: "Maccy",
+  title: "ClipShelf vs Maccy: Mac Clipboard Managers Compared",
+  description: "Maccy is a free, open-source clipboard manager for Mac. ClipShelf adds an iPhone and iPad app, iCloud sync, pinboards and text search in images, for a one-time US$0.49.",
+  intro: "Maccy is a small, free, open-source clipboard manager for Mac, and a good one. ClipShelf is for people who also want their clipboard on iPhone and iPad.",
+  rows: [
+    ["Price on Mac", "US$0.49 once (A$0.99) on the Mac App Store", "Free from GitHub or Homebrew; US$9.99 on the Mac App Store"],
+    ["Open source", "No", "Yes, MIT license"],
+    ["Platforms", "Mac, iPhone, iPad", "Mac"],
+    ["Sync between devices", "Your own iCloud", "No; history stays on your Mac"],
+    ["Search history", "Yes", "Yes"],
+    ["Pin items", "Yes, on named pinboards", "Yes"],
+    ["Skip passwords and other confidential content", "Yes", "Yes"],
+    ["Paste several items in order", "Yes, Paste Stack", "Not stated"],
+    ["Search text inside copied images", "Yes", "Not stated"],
+    ["Minimum macOS", "macOS 14", "macOS 14"],
+  ],
+  theyWin: [
+    "You only use a Mac and want a free app.",
+    "You want open-source code you can read and build yourself.",
+  ],
+  weWin: [
+    "You also want your clipboard history on iPhone or iPad.",
+    "You want to keep items on named, colored pinboards.",
+    "You paste lists in order, or search for text inside screenshots you copied.",
+  ],
+  sources: '<a href="https://maccy.app/">maccy.app</a>, <a href="https://github.com/p0deje/Maccy">github.com/p0deje/Maccy</a> and the US Mac App Store',
+});
+
 /* ---------- 404 ---------- */
 page({
   file: "404.html",
@@ -299,7 +384,7 @@ page({
 });
 
 /* ---------- Crawl files ---------- */
-const urls = ["", "mac", "iphone", "support", "privacy"];
+const urls = ["", "mac", "iphone", "support", "privacy", "vs-paste", "vs-maccy"];
 writeFileSync(join(root, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${SITE}/${u}</loc><lastmod>${UPDATED}</lastmod></url>`).join("\n")}

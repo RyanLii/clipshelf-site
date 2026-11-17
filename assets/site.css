@@ -65,3 +65,10 @@ tr + tr > * { border-top: 1px solid var(--line); }
   .phone { max-height: none; width: min(100%, 320px); }
 }
 @media (max-width: 420px) { .top-mark span { display: none; } }
+.compare { margin-top: 24px; font-size: .9375rem; }
+.compare th, .compare td { padding: 10px 12px 10px 0; border-bottom: 1px solid color-mix(in srgb, currentColor 12%, transparent); }
+.compare tbody th { white-space: normal; width: 34%; }
+.compare thead th { width: auto; font-weight: 600; }
+.buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px !important; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.small { color: var(--muted); font-size: .875rem; margin-top: 32px !important; }
