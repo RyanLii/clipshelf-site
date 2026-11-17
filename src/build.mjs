@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://clipshelfapp.vercel.app";
 const IOS = "https://apps.apple.com/app/id6823508990";
+const MAC = "https://apps.apple.com/app/id6823536096";
 const ISSUES = "https://github.com/RyanLii/clipshelf-site/issues";
 const UPDATED = "2026-11-07";
 
@@ -29,11 +30,13 @@ const macApp = {
   "@id": `${SITE}/mac#app`,
   name: "ClipShelf for Mac",
   url: `${SITE}/mac`,
+  downloadUrl: MAC,
   operatingSystem: "macOS 14 or later",
   applicationCategory: "ProductivityApplication",
   description: "A clipboard manager for Mac: open your clipboard history with Shift-Command-V, search it, pin items and paste a stack in order.",
   image: `${SITE}/assets/img/icon-192.png`,
   screenshot: [`${SITE}/assets/img/mac-mountain.webp`, `${SITE}/assets/img/mac-shibuya.webp`],
+  offers: { "@type": "Offer", price: "0.49", priceCurrency: "USD" },
   publisher: { "@id": `${SITE}/#publisher` },
 };
 const publisher = { "@type": "Person", "@id": `${SITE}/#publisher`, name: "Rui Li", url: `${SITE}/` };
@@ -134,7 +137,7 @@ page({
   <p>Clipboard history for Mac, iPhone and iPad.</p>
   <video controls playsinline preload="none" width="1920" height="1080" poster="assets/img/promo-v1-poster.jpg" aria-label="A 27-second video of ClipShelf on a Mac and an iPhone."><source src="assets/video/promo-v1.mp4" type="video/mp4"></video>
 </section>
-${split(`<h2>Mac</h2><p>Press Shift-Command-V in any app. Coming to the Mac App Store.</p><p><a href="mac">ClipShelf for Mac</a></p>`,
+${split(`<h2>Mac</h2><p>Press Shift-Command-V in any app.</p><p><a class="button" href="${MAC}">Get it on the Mac App Store</a></p><p><a href="mac">ClipShelf for Mac</a></p>`,
   pic("mac-shibuya.webp", 1800, 1125, "ClipShelf for Mac open over a photo of Shibuya at night.", lazy))}
 ${split(`<h2>iPhone and iPad</h2><p>Free, with a keyboard for any app.</p><p><a class="button" href="${IOS}">Get it on the App Store</a></p><p><a href="iphone">ClipShelf for iPhone</a></p>`,
   phone("iphone-list.webp", 800, 1067, "ClipShelf on iPhone: a searchable list of copied items with pinboard tabs above it."), true)}`,
@@ -151,7 +154,7 @@ page({
   schema: [macApp, crumbs("ClipShelf for Mac", "mac")],
   body: `<section class="hero">
   <h1>Clipboard manager for Mac</h1>
-  <p>Coming to the Mac App Store.</p>
+  <p><a class="button" href="${MAC}">Get it on the Mac App Store</a></p>
   ${pic("mac-shibuya.webp", 1800, 1125, "ClipShelf for Mac open at the bottom of the screen, showing copied items as cards.", 'fetchpriority="high" decoding="async"')}
 </section>
 <section class="columns">
@@ -218,7 +221,7 @@ const answers = [
   ["The keyboard shows no items", "In iPhone Settings &gt; General &gt; Keyboard &gt; Keyboards &gt; ClipShelf, turn on Allow Full Access. The keyboard needs it to read your ClipShelf history. It does not record what you type, and it does not use the network."],
   ["How do I sync Mac and iPhone?", "Sync is off until you turn it on. Sign in to the same iCloud account on each device, then turn on Settings &gt; Sync on each one. Choose everything, or pinboards only. Use Sync Now to sync at once."],
   ["My items do not sync", "Check that sync is on and that each device uses the same iCloud account. With “Pinboards only”, only pinned items sync."],
-  ["How much does it cost?", "ClipShelf for iPhone and iPad is free on the App Store, with no in-app purchases and no ads. ClipShelf for Mac is a separate paid app with a one-time price, no subscription and no in-app purchases. It is in App Review now, and the price for your country will show on the Mac App Store."],
+  ["How much does it cost?", "ClipShelf for iPhone and iPad is free on the App Store, with no in-app purchases and no ads. ClipShelf for Mac is a separate paid app with a one-time price, no subscription and no in-app purchases. The price for your country shows on the Mac App Store."],
   ["Is it safe to keep my clipboard in an app?", 'ClipShelf has no accounts and no servers of its own, and it does not use analytics or advertising. Your history stays on your devices and, if you turn on sync, in the private database of your own iCloud account, so the developer cannot read it. On Mac it skips content that apps mark as confidential, such as passwords from password managers, and content from apps you choose to ignore. See the <a href="privacy">Privacy Policy</a>.'],
   ["How long is my history kept?", "You choose: a day, a week, a month, a year or forever. Pinned items never expire."],
   ["Which devices does it run on?", "ClipShelf for Mac needs macOS 14 Sonoma or later. ClipShelf for iPhone and iPad needs iOS 17 or iPadOS 17 or later."],
